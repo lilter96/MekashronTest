@@ -1,0 +1,120 @@
+﻿@inherits UmbracoViewPage<MyCustomUmbracoProject.Models.ViewModels.RegisterViewModel>
+
+<!-- Pills navs -->
+@{
+    var countries = new List<SelectListItem>
+    {
+        new() { Text = "No Country", Value = "0", Selected = Model == null },
+        new() { Text = "Belarus", Value = "1", Selected = Model != null && Model.CountryId == 1 },
+        new() { Text = "Russia", Value = "2", Selected = Model != null && Model.CountryId == 2 }
+    };
+}
+<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a
+            class="nav-link active"
+            id="tab-login"
+            data-mdb-toggle="pill"
+            href="#pills-login"
+            role="tab"
+            aria-controls="pills-login"
+            aria-selected="true">
+            Login
+        </a
+        >
+    </li>
+    <li class="nav-item" role="presentation">
+        <a
+            class="nav-link"
+            id="tab-register"
+            data-mdb-toggle="pill"
+            href="#pills-register"
+            role="tab"
+            aria-controls="pills-register"
+            aria-selected="false">
+            Register
+        </a
+        >
+    </li>
+</ul>
+<!-- Pills navs -->
+
+<!-- Pills content -->
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        @using (Html.BeginUmbracoForm("Login", "AuthSurface", FormMethod.Post))
+        {
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.Email" type="email" id="loginName" class="form-control"/>
+                <label asp-for="@Model.Email" class="form-label" for="loginName">Email or username</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.Password" type="password" id="loginPassword" class="form-control"/>
+                <label asp-for="@Model.Password" class="form-label" for="loginPassword">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+        @using (Html.BeginUmbracoForm("Register", "AuthSurface", FormMethod.Post))
+        {
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.FirstName" type="text" id="registerName" class="form-control"/>
+                <label asp-for="@Model.FirstName" class="form-label" for="registerName">First Name</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.LastName" type="text" id="registerUsername" class="form-control"/>
+                <label asp-for="@Model.LastName" class="form-label" for="registerUsername">Last Name</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.Email" type="email" id="registerEmail" class="form-control"/>
+                <label asp-for="@Model.Email" class="form-label" for="registerEmail">Email</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.Mobile" type="tel" id="registerMobile" class="form-control"/>
+                <label asp-for="@Model.Mobile" class="form-label" for="registerMobile">Mobile</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input asp-for="@Model.Password" type="password" id="registerPassword" class="form-control"/>
+                <label asp-for="@Model.Password" class="form-label" for="registerPassword">Password</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <select asp-for="@Model.CountryId" asp-items="@countries" class="form-select" name="CountryId" id="country" required=""></select>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+        }
+    </div>
+</div>
+<!-- Pills content -->
+
+<div class="modal fade @(TempData["Error"] != null ? "show" : "") modal-error" 
+     id="errorModal" 
+     tabindex="-1" 
+     aria-labelledby="errorModalLabel" 
+     aria-hidden="true" 
+     style="@(TempData["Error"] != null ? "display: block;" : "")">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel"><text>Ошибка</text></h5>
+                <button type="button" class="btn-close closeModalBtn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @TempData["Error"]
+            </div>
+        </div>
+    </div>
+</div>
+

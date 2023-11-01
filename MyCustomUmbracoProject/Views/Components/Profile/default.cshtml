@@ -1,0 +1,116 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<MyCustomUmbracoProject.Models.ViewModels.ProfileViewModel>
+
+@if (User.Identity.IsAuthenticated && Model != null)
+{
+    <h1 class="mt-5 mb-5 d-flex justify-content-center"><div>Hello @Model.FirstName @Model.LastName!</div></h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>First Name</td>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <td>Company</td>
+            <td>@Model.Company</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>@Model.City</td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>@Model.Country</td>
+        </tr>
+        <tr>
+            <td>Zip</td>
+            <td>@Model.Zip</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>@Model.Phone</td>
+        </tr>
+        <tr>
+            <td>Mobile</td>
+            <td>@Model.Mobile</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <td>Email Confirm</td>
+            <td>@Model.EmailConfirm</td>
+        </tr>
+        <tr>
+            <td>Mobile Confirm</td>
+            <td>@Model.MobileConfirm</td>
+        </tr>
+        <tr>
+            <td>Country ID</td>
+            <td>@Model.CountryID</td>
+        </tr>
+        <tr>
+            <td>Fax</td>
+            <td>@Model.Fax</td>
+        </tr>
+        <tr>
+            <td>Birthday</td>
+            <td>@Model.Birthday</td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td>@Model.State</td>
+        </tr>
+        <tr>
+            <td>Passport Confirmed</td>
+            <td>@Model.PassportConfirmed</td>
+        </tr>
+        <tr>
+            <td>Card Confirmed</td>
+            <td>@Model.CardConfirmed</td>
+        </tr>
+        <tr>
+            <td>aID</td>
+            <td>@Model.aID</td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <div class="modal fade @(TempData["Success"] != null ? "show" : "") modal-success" 
+         id="successModal" 
+         tabindex="-1" 
+         aria-labelledby="successModalLabel" 
+         aria-hidden="true" 
+         style="@(TempData["Success"] != null ? "display: block;" : "")">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel"><text>Успешный вход</text></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 class="mt-5 mb-5 d-flex justify-content-center">
+        <div>
+            <p>You must sign in to view your profile.</p>
+        </div>
+    </h1>
+}

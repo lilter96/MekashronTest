@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "Master.cshtml";
+}
+<div id="loginForm" class="container col-md-5 mt-5 border border-1 rounded">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2>Successfully logged in. <a href="/profile">View profile</a></h2>
+    }
+    else
+    {
+        @(await Component.InvokeAsync("Login"))
+    }
+</div>

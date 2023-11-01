@@ -1,0 +1,37 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="@UmbracoContext!.PublishedRequest!.Culture">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/dist/mdb-ui-kit/mdb.min.css"/>
+    <link rel="stylesheet" href="~/styles/login.css"/>
+    <title>Test App</title>
+</head>
+
+<body>
+    @await Html.PartialAsync("topNavigation")
+    <div id="masterContainer" class="container">
+        @RenderBody()
+    </div>
+<script
+    src="~/dist/bootstrap5/bootstrap.bundle.min.js"
+    async
+    type="text/javascript"
+    defer>
+</script>
+<script
+    src="~/dist/mdb-ui-kit/mdb.min.js" 
+    async
+    type="text/javascript"
+    defer>
+    </script>
+<script src="~/scripts/modal.js" type="text/javascript"></script>
+</body>
+</html>

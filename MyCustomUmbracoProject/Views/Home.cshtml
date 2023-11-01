@@ -1,0 +1,8 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "Master.cshtml";
+}
+<div id="home-container" class="container d-flex justify-content-center">
+    @(await Component.InvokeAsync("Home"))
+</div>
