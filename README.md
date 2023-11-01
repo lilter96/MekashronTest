@@ -23,6 +23,6 @@ Develop a sleek, one-page website using **Bootstrap** and powered by **Umbraco C
 
 ### 3. **View current user profile**
 
-### 4. **Good performance grades"
+### 4. **Good performance grades**
 - ![Mobile](https://github.com/lilter96/MekashronTest/blob/master/Screenshots/mobile_performance.png)
 - ![Desktop](https://github.com/lilter96/MekashronTest/blob/master/Screenshots/computer_performance.png)
